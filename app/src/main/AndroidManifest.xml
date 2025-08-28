@@ -50,12 +50,12 @@
             android:name=".SignupScreen"
             android:configChanges="orientation|screenSize"
             android:exported="false"
-            android:theme="@style/MyAppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginScreen"
             android:configChanges="orientation|screenSize"
             android:exported="false"
-            android:theme="@style/MyAppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".SplashScreen"

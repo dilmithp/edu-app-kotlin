@@ -2,30 +2,24 @@ package com.sadeesha.platform.classroomappui
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.view.Window
-import android.view.WindowManager
+import android.os.Handler
+import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 
 class SplashScreen : AppCompatActivity() {
+
+    private val splashTimeOut: Long = 3000 // 3 seconds
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
         setContentView(R.layout.activity_splash_screen)
-        val timerThread: Thread = object : Thread() {
-            override fun run() {
-                try {
-                    sleep(3000)
-                    val i = Intent(this@SplashScreen, LoginScreen::class.java)
-                    startActivity(i)
-                    finish()
-                } catch (e: Exception) {
-                }
-            }
-        }
-        timerThread.start()
+
+        supportActionBar?.hide()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, LoginScreen::class.java)
+            startActivity(intent)
+            finish()
+        }, splashTimeOut)
     }
 }
